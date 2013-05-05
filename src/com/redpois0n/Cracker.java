@@ -6,9 +6,7 @@ import com.lixia.rdp.RdpJPanel;
 
 public class Cracker implements Runnable {
 	
-	private String ip = "HIDDEN";
-	private String username = "HIDDEN";
-	private String password = "HIDDEN";
+	
 	
 	private RdpJPanel panel;
 	private RdesktopSwing swing;
@@ -16,8 +14,11 @@ public class Cracker implements Runnable {
 	@Override
 	public void run() {
 		try {
-			String[] args = new String[] { "-u", username, "-p", password, ip };
-			RdesktopSwing.init(args, this);
+			
+			while (true) {
+				String[] args = new String[] { "-u", username, "-p", password, ip };
+				RdesktopSwing.init(args, this);
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -26,6 +27,7 @@ public class Cracker implements Runnable {
 	public void loggedOn() {
 		System.out.println("Successfully cracked " + ip + " with username " + username + " with password " + password);
 		
+		panel.disconnect();
 	}
 
 	public String getIp() {

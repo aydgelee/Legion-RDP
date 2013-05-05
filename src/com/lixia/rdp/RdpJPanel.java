@@ -268,7 +268,7 @@ public class RdpJPanel {
 				localRdpPacket_Localised = receive(arrayOfInt);
 				if (localRdpPacket_Localised == null)
 					return;
-			} catch (EOFException localEOFException) {
+			} catch (Exception localEOFException) {
 				return;
 			}
 			switch (arrayOfInt[0]) {

@@ -186,8 +186,8 @@ public class RdesktopSwing {
 		BasicConfigurator.configure();
 		logger.setLevel(Level.INFO);
 		RDPClientChooser localRDPClientChooser = new RDPClientChooser();
-		if ((localRDPClientChooser.RunNativeRDPClient(paramArrayOfString)) && (!Common.underApplet))
-			System.exit(0);
+		//if ((localRDPClientChooser.RunNativeRDPClient(paramArrayOfString)) && (!Common.underApplet))
+			//System.exit(0);
 		int i = 51;
 		int j = 0;
 		StringBuffer localStringBuffer = new StringBuffer();
@@ -586,8 +586,8 @@ public class RdesktopSwing {
 			paramRdesktopJFrame.dispose();
 		}
 		System.gc();
-		if ((paramBoolean) && (!Common.underApplet))
-			System.exit(paramInt);
+		//if ((paramBoolean) && (!Common.underApplet))
+			//System.exit(paramInt);
 	}
 
 	public static void customError(String paramString, RdpJPanel paramRdpJPanel, RdesktopJFrame paramRdesktopJFrame, boolean paramBoolean) {
