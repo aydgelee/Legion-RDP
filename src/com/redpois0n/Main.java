@@ -27,11 +27,6 @@ public class Main {
 		Frame frame = new Frame();
 		frame.setVisible(true);
 		
-		
-		for (int i = 0; i < 10; i++) {
-			new Thread(new Cracker()).start();
-		}
-		
 		File userFile = new File("usernames.txt");
 		File passFile = new File("passwords.txt");
 		
@@ -42,6 +37,10 @@ public class Main {
 		if (passFile.exists()) {
 			passwords.addAll(Arrays.asList(FileUtils.readFile(passFile)));
 		}
+		
+		for (int i = 0; i < 10; i++) {
+			new Thread(new Cracker()).start();
+		}		
 	}
 
 	public static void error(String[] errors) {
