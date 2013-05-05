@@ -37,15 +37,28 @@ public class Cracker implements Runnable {
 					password = Main.getPassword();
 				}
  				
+				Frame.instance.status(threadID, "Cracking...");
 				Frame.instance.setCombination(threadID, username, password, tested++);
 				String[] args = new String[] { "-u", username, "-p", password, ip };
 				RdesktopSwing.init(args, this);
 				
+				panel.disconnect();
+				
 				Main.tried(username, password);
+				
+				Frame.instance.status(threadID, "Delaying...");
+				
+				if (Main.delay != -1L) {
+					Thread.sleep(Main.delay);
+				}
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public void status(String status) {
+		Frame.instance.status(threadID, status);
 	}
 
 	public void loggedOn() {

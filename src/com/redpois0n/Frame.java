@@ -17,7 +17,7 @@ public class Frame extends JFrame {
 
 	private JPanel contentPane;
 	private JTable table;
-	private DefaultTableModel model = new DefaultTableModel(new Object[][] {}, new String[] { "Thread ID", "Combinations", "Current Combination" }) {
+	private DefaultTableModel model = new DefaultTableModel(new Object[][] {}, new String[] { "Thread ID", "Combinations", "Current Combination", "Status" }) {
 		public boolean isCellEditable(int i, int i1) {
 			return false;
 		}
@@ -66,6 +66,12 @@ public class Frame extends JFrame {
 		
 		model.setValueAt(test, row, 1);
 		model.setValueAt("User: " + user + " Pass: " + pass, row, 2);
+	}
+	
+	public void status(short threadid, String status) {
+		int row = findRow(threadid);
+		
+		model.setValueAt(status, row, 3);
 	}
 	
 

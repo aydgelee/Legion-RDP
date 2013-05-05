@@ -20,6 +20,7 @@ public class Main {
 	public static final List<String> passwords = new ArrayList<String>();
 
 	public static final long timeout = 2 * 1000;
+	public static final long delay = 1000;
 
 	public static void main(String[] args) throws Exception {	
 		UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());

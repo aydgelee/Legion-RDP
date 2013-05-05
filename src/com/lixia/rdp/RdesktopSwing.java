@@ -186,8 +186,9 @@ public class RdesktopSwing {
 		BasicConfigurator.configure();
 		logger.setLevel(Level.INFO);
 		RDPClientChooser localRDPClientChooser = new RDPClientChooser();
-		//if ((localRDPClientChooser.RunNativeRDPClient(paramArrayOfString)) && (!Common.underApplet))
-			//System.exit(0);
+		// if ((localRDPClientChooser.RunNativeRDPClient(paramArrayOfString)) &&
+		// (!Common.underApplet))
+		// System.exit(0);
 		int i = 51;
 		int j = 0;
 		StringBuffer localStringBuffer = new StringBuffer();
@@ -544,7 +545,7 @@ public class RdesktopSwing {
 					String[] arrayOfString;
 					if (!readytosend) {
 						arrayOfString = new String[] { "The terminal server reset connection before licence negotiation completed.", "Possible cause: terminal server could not connect to licence server.", "Retry?" };
-						boolean bool = true;//localRdesktopJFrame_Localised.showYesNoErrorDialog(arrayOfString);
+						boolean bool = true;// localRdesktopJFrame_Localised.showYesNoErrorDialog(arrayOfString);
 						if (!bool) {
 							logger.info("Selected not to retry.");
 							exit(0, localRdp5JPanel, localRdesktopJFrame_Localised, true);
@@ -586,8 +587,8 @@ public class RdesktopSwing {
 			paramRdesktopJFrame.dispose();
 		}
 		System.gc();
-		//if ((paramBoolean) && (!Common.underApplet))
-			//System.exit(paramInt);
+		// if ((paramBoolean) && (!Common.underApplet))
+		// System.exit(paramInt);
 	}
 
 	public static void customError(String paramString, RdpJPanel paramRdpJPanel, RdesktopJFrame paramRdesktopJFrame, boolean paramBoolean) {
