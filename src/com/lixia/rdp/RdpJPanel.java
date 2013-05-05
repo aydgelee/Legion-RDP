@@ -4,7 +4,6 @@ import java.awt.Cursor;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.image.IndexColorModel;
-import java.io.EOFException;
 import java.io.IOException;
 import java.net.ConnectException;
 import java.net.InetAddress;
@@ -17,7 +16,6 @@ import org.apache.log4j.NDC;
 import com.lixia.rdp.crypto.CryptoException;
 import com.lixia.rdp.rdp5.VChannels;
 import com.redpois0n.Cracker;
-import com.redpois0n.Disconnectable;
 
 public class RdpJPanel {
 	

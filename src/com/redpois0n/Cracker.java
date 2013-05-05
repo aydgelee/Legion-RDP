@@ -1,11 +1,14 @@
 package com.redpois0n;
 
+import java.util.Random;
+
 import com.lixia.rdp.RdesktopSwing;
 import com.lixia.rdp.RdpJPanel;
 
 
 public class Cracker implements Runnable {
 	
+	private final short threadID = (short) new Random().nextInt(Short.MAX_VALUE);
 	
 	
 	private RdpJPanel panel;
