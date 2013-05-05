@@ -50,7 +50,7 @@ public class RdesktopSwing {
 	public static final int exDiscReasonLicenseErrClientEncryption = 264;
 	public static final int exDiscReasonLicenseCantUpgradeLicense = 265;
 	public static final int exDiscReasonLicenseNoRemoteConnections = 266;
-	static Logger logger = new CrackLogger();//Logger.getLogger("com.lixia.rdp");
+	static Logger logger = Logger.getLogger("com.lixia.rdp");
 	static boolean keep_running;
 	static boolean loggedon;
 	static boolean readytosend;
@@ -177,7 +177,7 @@ public class RdesktopSwing {
 	}
 
 	public static void init(String[] paramArrayOfString, Cracker cracker) throws OrderException, RdesktopException {
-		((CrackLogger)logger).setCracker(cracker);
+		// TODO logger.setCracker(cracker);
 		keep_running = true;
 		loggedon = false;
 		readytosend = false;
