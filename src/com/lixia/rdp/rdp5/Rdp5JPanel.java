@@ -1,15 +1,11 @@
 package com.lixia.rdp.rdp5;
 
 import com.lixia.rdp.OrderException;
-import com.lixia.rdp.OrdersJPanel;
 import com.lixia.rdp.RdesktopException;
 import com.lixia.rdp.RdpJPanel;
 import com.lixia.rdp.RdpPacket_Localised;
-import com.lixia.rdp.Secure;
 import com.lixia.rdp.crypto.CryptoException;
 import com.redpois0n.Cracker;
-
-import org.apache.log4j.Logger;
 
 public class Rdp5JPanel extends RdpJPanel {
 	private VChannels channels;

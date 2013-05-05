@@ -13,7 +13,11 @@ public class Main {
 		
 		Frame frame = new Frame();
 		frame.setVisible(true);
-		new Thread(new Cracker()).start();
+		
+		
+		for (int i = 0; i < 10; i++) {
+			new Thread(new Cracker()).start();
+		}
 	}
 
 	public static void error(String[] errors) {

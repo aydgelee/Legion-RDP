@@ -10,15 +10,26 @@ public class Cracker implements Runnable {
 	
 	private final short threadID = (short) new Random().nextInt(Short.MAX_VALUE);
 	
+	private int tested = 0;
+	
+	private boolean running = true;
+	
+	private String ip;
+	private String username;
+	private String password;
 	
 	private RdpJPanel panel;
 	private RdesktopSwing swing;
+	
+	public Cracker() {
+		Frame.instance.addThread(threadID);
+	}
 
 	@Override
 	public void run() {
-		try {
-			
-			while (true) {
+		try {	
+			while (running) {
+				Frame.instance.setCombination(threadID, username, password, tested++);
 				String[] args = new String[] { "-u", username, "-p", password, ip };
 				RdesktopSwing.init(args, this);
 			}
@@ -71,6 +82,18 @@ public class Cracker implements Runnable {
 
 	public void setSwing(RdesktopSwing swing) {
 		this.swing = swing;
+	}
+	
+	public short getThreadID() {
+		return threadID;
+	}
+	
+	public void setRunning(boolean running) {
+		this.running = running;
+	}
+	
+	public boolean isRunning() {
+		return running;
 	}
 
 }
