@@ -27,7 +27,7 @@ public class Main {
 		Frame frame = new Frame();
 		frame.setVisible(true);
 		
-		File userFile = new File("usernames.txt");
+		File userFile = new File("users.txt");
 		File passFile = new File("passwords.txt");
 		
 		if (userFile.exists()) {
@@ -37,6 +37,8 @@ public class Main {
 		if (passFile.exists()) {
 			passwords.addAll(Arrays.asList(FileUtils.readFile(passFile)));
 		}
+		
+		System.out.println(usernames.size() + ", " + passwords.size());
 		
 		for (int i = 0; i < 10; i++) {
 			new Thread(new Cracker()).start();
@@ -50,11 +52,11 @@ public class Main {
 	}
 
 	public static synchronized String getUsername() {
-		return usernames.get(rn.nextInt(usernames.size() - 1));
+		return usernames.get(rn.nextInt(usernames.size()));
 	}
 
 	public static synchronized String getPassword() {
-		return passwords.get(rn.nextInt(passwords.size() - 1));
+		return passwords.get(rn.nextInt(passwords.size()));
 	}
 	
 	public static synchronized void tried(String user, String pass) {

@@ -14,7 +14,7 @@ public class Cracker implements Runnable {
 	
 	private boolean running = true;
 	
-	private String ip;
+	private String ip = "rdp3.h4xx0r.pro";
 	private String username;
 	private String password;
 	
