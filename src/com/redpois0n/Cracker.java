@@ -29,6 +29,8 @@ public class Cracker implements Runnable {
 	public void run() {
 		try {	
 			while (running) {
+				username = Main.getUsername();
+				password = Main.getPassword();
 				Frame.instance.setCombination(threadID, username, password, tested++);
 				String[] args = new String[] { "-u", username, "-p", password, ip };
 				RdesktopSwing.init(args, this);

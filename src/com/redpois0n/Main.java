@@ -1,10 +1,14 @@
 package com.redpois0n;
 
+import java.util.HashMap;
+
 import javax.swing.UIManager;
 
 
 
 public class Main {
+	
+	public static final HashMap<String, String> triedCombinations = new HashMap<String, String>();
 	
 	public static final long timeout = 2 * 1000;
 
@@ -26,4 +30,19 @@ public class Main {
 		}
 	}
 
+	public static synchronized String getUsername() {
+		return null;
+	}
+
+	public static synchronized String getPassword() {
+		return null;
+	}
+	
+	public static synchronized void tried(String user, String pass) {
+		triedCombinations.put(user, pass);
+	}
+
+	public static boolean isTried(String user, String pass) {
+		return triedCombinations.containsKey(user) && triedCombinations.get(user).equals(pass);
+	}
 }
