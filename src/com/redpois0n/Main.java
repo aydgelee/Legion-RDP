@@ -41,7 +41,7 @@ public class Main {
 		
 		System.out.println(usernames.size() + ", " + passwords.size());
 		
-		for (int i = 0; i < 1; i++) {
+		for (int i = 0; i < 10; i++) {
 			new Thread(new Cracker()).start();
 		}		
 	}

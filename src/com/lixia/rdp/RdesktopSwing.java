@@ -26,7 +26,6 @@ import com.lixia.rdp.rdp5.cliprdr.ClipChannel;
 import com.lixia.rdp.rdp5.keys.KeysChannel;
 import com.lixia.rdp.tools.SendEventJPanel;
 import com.redpois0n.Cracker;
-import com.redpois0n.CrackLogger;
 import com.redpois0n.Main;
 
 public class RdesktopSwing {
@@ -50,7 +49,7 @@ public class RdesktopSwing {
 	public static final int exDiscReasonLicenseErrClientEncryption = 264;
 	public static final int exDiscReasonLicenseCantUpgradeLicense = 265;
 	public static final int exDiscReasonLicenseNoRemoteConnections = 266;
-	static Logger logger = Logger.getLogger("com.lixia.rdp");
+	static Logger logger = Logger.getLogger("com.lixia.rdp.cock");
 	static boolean keep_running;
 	static boolean loggedon;
 	static boolean readytosend;

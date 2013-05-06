@@ -60,7 +60,6 @@ public class Cracker implements Runnable {
 
 	public void loggedOn() {
 		status("Successfully cracked " + ip + " with username " + username + " with password " + password);
-		Main.sleep(1000L);
 		panel.disconnect();
 	}
 

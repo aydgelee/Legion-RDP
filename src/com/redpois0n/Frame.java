@@ -9,6 +9,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
 
 @SuppressWarnings("serial")
 public class Frame extends JFrame {
@@ -22,6 +24,11 @@ public class Frame extends JFrame {
 			return false;
 		}
 	};
+	private JMenu mnFile;
+	private JMenu mnLists;
+	private JMenuItem mntmUsernames;
+	private JMenuItem mntmIpAddresses;
+	private JMenuItem mntmPasswords;
 
 	public Frame() {
 		instance = this;
@@ -30,6 +37,21 @@ public class Frame extends JFrame {
 
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
+		
+		mnFile = new JMenu("File");
+		menuBar.add(mnFile);
+		
+		mnLists = new JMenu("Lists");
+		menuBar.add(mnLists);
+		
+		mntmIpAddresses = new JMenuItem("IP addresses");
+		mnLists.add(mntmIpAddresses);
+		
+		mntmUsernames = new JMenuItem("Usernames");
+		mnLists.add(mntmUsernames);
+		
+		mntmPasswords = new JMenuItem("Passwords");
+		mnLists.add(mntmPasswords);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
