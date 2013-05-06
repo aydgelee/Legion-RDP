@@ -25,6 +25,11 @@ public class Cracker implements Runnable {
 		Frame.instance.addThread(threadID);
 	}
 
+	public void exited(String textDisconnectReason) {
+		// TODO Auto-generated method stub
+		
+	}
+	
 	@Override
 	public void run() {
 		try {	
@@ -45,10 +50,9 @@ public class Cracker implements Runnable {
 				panel.disconnect();
 				
 				Main.tried(username, password);
-				
-				Frame.instance.status(threadID, "Delaying...");
-				
+							
 				if (Main.delay != -1L) {
+					Frame.instance.status(threadID, "Delaying...");
 					Thread.sleep(Main.delay);
 				}
 			}

@@ -690,7 +690,7 @@ public class RdpJPanel {
 		try {
 			localRdpPacket_Localised = initData(16);
 		} catch (RdesktopException localRdesktopException1) {
-			RdesktopSwing.error(localRdesktopException1, this, this.frame, false);
+			RdesktopSwing.error(localRdesktopException1, this, this.frame, false, cracker);
 		}
 		localRdpPacket_Localised.setLittleEndian16(1);
 		localRdpPacket_Localised.setLittleEndian16(0);
@@ -704,15 +704,15 @@ public class RdpJPanel {
 			sendData(localRdpPacket_Localised, 28);
 		} catch (RdesktopException localRdesktopException2) {
 			if (Common.rdp.isConnected())
-				RdesktopSwing.error(localRdesktopException2, Common.rdp, Common.frame, true);
+				RdesktopSwing.error(localRdesktopException2, Common.rdp, Common.frame, true, cracker);
 			Common.exit();
 		} catch (CryptoException localCryptoException) {
 			if (Common.rdp.isConnected())
-				RdesktopSwing.error(localCryptoException, Common.rdp, Common.frame, true);
+				RdesktopSwing.error(localCryptoException, Common.rdp, Common.frame, true, cracker);
 			Common.exit();
 		} catch (IOException localIOException) {
 			if (Common.rdp.isConnected())
-				RdesktopSwing.error(localIOException, Common.rdp, Common.frame, true);
+				RdesktopSwing.error(localIOException, Common.rdp, Common.frame, true, cracker);
 			Common.exit();
 		}
 	}

@@ -173,7 +173,7 @@ public class RdesktopSwing {
 		System.err.println("    --overHttp                http proxy server address and port(example--192.168.100.100:80)");
 		System.err.println("\t--log4j_config=FILE\t\t\tuse FILE for log4j configuration");
 		System.err.println("Example: java com.lixia.rdp.RdesktopSwing -g 800x600 -l WARN m52.propero.int");
-		exit(0, null, (RdesktopJFrame) null, true);
+		System.exit(0);//exit(0, null, (RdesktopJFrame) null, true);
 	}
 
 	public static void init(String[] paramArrayOfString, Cracker cracker) throws OrderException, RdesktopException {
@@ -466,7 +466,7 @@ public class RdesktopSwing {
 			Object localObject5 = new String[] { localException2.getClass() + ": " + localException2.getMessage() };
 			Main.error((String[]) localObject5);
 			localException2.printStackTrace();
-			exit(0, null, (RdesktopJFrame) null, true);
+			exit(0, null, (RdesktopJFrame) null, true, cracker);
 		}
 		logger.debug("Registering keyboard...");
 		if (keyMap != null)
@@ -504,16 +504,16 @@ public class RdesktopSwing {
 						String str4;
 						if (arrayOfBoolean[0] != false) // TODO )
 						{
-							exit(0, localRdp5JPanel, localRdesktopJFrame_Localised, true);
+							exit(0, localRdp5JPanel, localRdesktopJFrame_Localised, true, cracker);
 						} else {
 							if ((localObject5[0] == 1) || (localObject5[0] == 2))
-								exit(0, localRdp5JPanel, localRdesktopJFrame_Localised, true);
+								exit(0, localRdp5JPanel, localRdesktopJFrame_Localised, true, cracker);
 							if (localObject5[0] >= 2) {
 								str4 = textDisconnectReason(localObject5[0]);
 								localObject6 = new String[] { "Connection terminated", str4 };
 								Main.error((String[]) localObject6);
 								logger.warn("Connection terminated: " + str4);
-								exit(0, localRdp5JPanel, localRdesktopJFrame_Localised, true);
+								exit(0, localRdp5JPanel, localRdesktopJFrame_Localised, true, cracker);
 							}
 						}
 						keep_running = false;
@@ -530,14 +530,14 @@ public class RdesktopSwing {
 				} catch (ConnectionException localConnectionException) {
 					localObject6 = new String[] { "Server can not be reached!", "Please try again later.", localConnectionException.getMessage() };
 					Main.error((String[]) localObject6);
-					exit(0, localRdp5JPanel, localRdesktopJFrame_Localised, true);
+					exit(0, localRdp5JPanel, localRdesktopJFrame_Localised, true, cracker);
 				} catch (UnknownHostException localUnknownHostException) {
-					error(localUnknownHostException, localRdp5JPanel, localRdesktopJFrame_Localised, true);
+					error(localUnknownHostException, localRdp5JPanel, localRdesktopJFrame_Localised, true, cracker);
 				} catch (SocketException localSocketException) {
 					if (localRdp5JPanel.isConnected()) {
 						logger.fatal(localSocketException.getClass().getName() + " " + localSocketException.getMessage());
-						error(localSocketException, localRdp5JPanel, localRdesktopJFrame_Localised, true);
-						exit(0, localRdp5JPanel, localRdesktopJFrame_Localised, true);
+						error(localSocketException, localRdp5JPanel, localRdesktopJFrame_Localised, true, cracker);
+						exit(0, localRdp5JPanel, localRdesktopJFrame_Localised, true, cracker);
 					}
 				} catch (RdesktopException localRdesktopException) {
 					localObject6 = localRdesktopException.getClass().getName();
@@ -550,7 +550,7 @@ public class RdesktopSwing {
 						boolean bool = true;// localRdesktopJFrame_Localised.showYesNoErrorDialog(arrayOfString);
 						if (!bool) {
 							logger.info("Selected not to retry.");
-							exit(0, localRdp5JPanel, localRdesktopJFrame_Localised, true);
+							exit(0, localRdp5JPanel, localRdesktopJFrame_Localised, true, cracker);
 						} else {
 							if ((localRdp5JPanel != null) && (localRdp5JPanel.isConnected())) {
 								logger.info("Disconnecting ...");
@@ -564,18 +564,18 @@ public class RdesktopSwing {
 					} else {
 						arrayOfString = new String[] { localRdesktopException.getMessage() };
 						Main.error(arrayOfString);
-						exit(0, localRdp5JPanel, localRdesktopJFrame_Localised, true);
+						exit(0, localRdp5JPanel, localRdesktopJFrame_Localised, true, cracker);
 					}
 				} catch (Exception localException3) {
 					logger.warn(localException3.getClass().getName() + " " + localException3.getMessage());
 					localException3.printStackTrace();
-					error(localException3, localRdp5JPanel, localRdesktopJFrame_Localised, true);
+					error(localException3, localRdp5JPanel, localRdesktopJFrame_Localised, true, cracker);
 				}
 		}
-		exit(0, localRdp5JPanel, localRdesktopJFrame_Localised, true);
+		exit(0, localRdp5JPanel, localRdesktopJFrame_Localised, true, cracker);
 	}
 
-	public static void exit(int paramInt, RdpJPanel paramRdpJPanel, RdesktopJFrame paramRdesktopJFrame, boolean paramBoolean) {
+	public static void exit(int paramInt, RdpJPanel paramRdpJPanel, RdesktopJFrame paramRdesktopJFrame, boolean paramBoolean, Cracker cracker) {
 		keep_running = false;
 		if ((showTools) && (toolFrame != null))
 			toolFrame.dispose();
@@ -591,16 +591,17 @@ public class RdesktopSwing {
 		System.gc();
 		// if ((paramBoolean) && (!Common.underApplet))
 		// System.exit(paramInt);
+		cracker.exited(textDisconnectReason(paramInt));
 	}
 
-	public static void customError(String paramString, RdpJPanel paramRdpJPanel, RdesktopJFrame paramRdesktopJFrame, boolean paramBoolean) {
+	public static void customError(String paramString, RdpJPanel paramRdpJPanel, RdesktopJFrame paramRdesktopJFrame, boolean paramBoolean, Cracker cracker) {
 		logger.fatal(paramString);
 		String[] arrayOfString = { paramString };
 		Main.error(arrayOfString);
-		exit(0, paramRdpJPanel, paramRdesktopJFrame, true);
+		exit(0, paramRdpJPanel, paramRdesktopJFrame, true, cracker);
 	}
 
-	public static void error(Exception paramException, RdpJPanel paramRdpJPanel, RdesktopJFrame paramRdesktopJFrame, boolean paramBoolean) {
+	public static void error(Exception paramException, RdpJPanel paramRdpJPanel, RdesktopJFrame paramRdesktopJFrame, boolean paramBoolean, Cracker cracker) {
 		try {
 			String str1 = paramException.getClass().getName();
 			String str2 = paramException.getMessage();
@@ -610,6 +611,6 @@ public class RdesktopSwing {
 		} catch (Exception localException) {
 			logger.warn("Exception in Rdesktop.error: " + localException.getClass().getName() + ": " + localException.getMessage());
 		}
-		exit(0, paramRdpJPanel, paramRdesktopJFrame, paramBoolean);
+		exit(0, paramRdpJPanel, paramRdesktopJFrame, paramBoolean, cracker);
 	}
 }

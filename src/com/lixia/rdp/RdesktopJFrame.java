@@ -92,7 +92,7 @@ public class RdesktopJFrame extends JFrame {
 
 		public void windowClosing(WindowEvent paramWindowEvent) {
 			RdesktopJFrame.this.setVisible(false);
-			RdesktopSwing.exit(0, RdesktopJFrame.this.rdp, (RdesktopJFrame) paramWindowEvent.getWindow(), true);
+			System.exit(0);//RdesktopSwing.exit(0, RdesktopJFrame.this.rdp, (RdesktopJFrame) paramWindowEvent.getWindow(), true, cracker);
 		}
 
 		public void windowLostFocus(WindowEvent paramWindowEvent) {
