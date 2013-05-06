@@ -25,11 +25,6 @@ public class Cracker implements Runnable {
 		Frame.instance.addThread(threadID);
 	}
 
-	public void exited(String textDisconnectReason) {
-		// TODO Auto-generated method stub
-		
-	}
-	
 	@Override
 	public void run() {
 		try {	
@@ -46,9 +41,7 @@ public class Cracker implements Runnable {
 				Frame.instance.setCombination(threadID, username, password, tested++);
 				String[] args = new String[] { "-u", username, "-p", password, ip };
 				RdesktopSwing.init(args, this);
-				
-				panel.disconnect();
-				
+								
 				Main.tried(username, password);
 							
 				if (Main.delay != -1L) {
@@ -66,8 +59,8 @@ public class Cracker implements Runnable {
 	}
 
 	public void loggedOn() {
-		System.out.println("Successfully cracked " + ip + " with username " + username + " with password " + password);
-		
+		status("Successfully cracked " + ip + " with username " + username + " with password " + password);
+		Main.sleep(1000L);
 		panel.disconnect();
 	}
 

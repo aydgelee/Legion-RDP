@@ -41,7 +41,7 @@ public class Main {
 		
 		System.out.println(usernames.size() + ", " + passwords.size());
 		
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < 1; i++) {
 			new Thread(new Cracker()).start();
 		}		
 	}
@@ -66,5 +66,13 @@ public class Main {
 
 	public static synchronized boolean isTried(String user, String pass) {
 		return triedCombinations.containsKey(user) && triedCombinations.get(user).equals(pass);
+	}
+
+	public static void sleep(long l) {
+		try {
+			Thread.sleep(l);
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
 	}
 }

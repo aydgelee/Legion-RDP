@@ -591,7 +591,7 @@ public class RdesktopSwing {
 		System.gc();
 		// if ((paramBoolean) && (!Common.underApplet))
 		// System.exit(paramInt);
-		cracker.exited(textDisconnectReason(paramInt));
+		cracker.status(textDisconnectReason(paramInt));
 	}
 
 	public static void customError(String paramString, RdpJPanel paramRdpJPanel, RdesktopJFrame paramRdesktopJFrame, boolean paramBoolean, Cracker cracker) {
