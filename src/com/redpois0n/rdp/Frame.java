@@ -1,16 +1,19 @@
-package com.redpois0n;
+package com.redpois0n.rdp;
 
 import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JFrame;
+import javax.swing.JMenu;
 import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.JMenu;
-import javax.swing.JMenuItem;
 
 @SuppressWarnings("serial")
 public class Frame extends JFrame {
@@ -29,6 +32,13 @@ public class Frame extends JFrame {
 	private JMenuItem mntmUsernames;
 	private JMenuItem mntmIpAddresses;
 	private JMenuItem mntmPasswords;
+	private JMenu mnSettings;
+	private JCheckBoxMenuItem chckbxmntmStopThreadOn;
+	private JMenuItem mntmStart;
+	
+	public boolean shouldStopOnSuccess() {
+		return chckbxmntmStopThreadOn.isSelected();
+	}
 
 	public Frame() {
 		instance = this;
@@ -41,6 +51,14 @@ public class Frame extends JFrame {
 		mnFile = new JMenu("File");
 		menuBar.add(mnFile);
 		
+		mntmStart = new JMenuItem("Start");
+		mntmStart.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				new DialogStart().setVisible(true);
+			}
+		});
+		mnFile.add(mntmStart);
+		
 		mnLists = new JMenu("Lists");
 		menuBar.add(mnLists);
 		
@@ -48,10 +66,26 @@ public class Frame extends JFrame {
 		mnLists.add(mntmIpAddresses);
 		
 		mntmUsernames = new JMenuItem("Usernames");
+		mntmUsernames.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				DialogList frame = new DialogList(new String[] { "Usernames" });
+				for (String str : Main.usernames) {
+					frame.getModel().addRow(new Object[] { str });
+				}
+				frame.setVisible(true);
+			}
+		});
 		mnLists.add(mntmUsernames);
 		
 		mntmPasswords = new JMenuItem("Passwords");
 		mnLists.add(mntmPasswords);
+		
+		mnSettings = new JMenu("Settings");
+		menuBar.add(mnSettings);
+		
+		chckbxmntmStopThreadOn = new JCheckBoxMenuItem("Stop thread on success");
+		chckbxmntmStopThreadOn.setSelected(true);
+		mnSettings.add(chckbxmntmStopThreadOn);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
@@ -94,6 +128,14 @@ public class Frame extends JFrame {
 		int row = findRow(threadid);
 		
 		model.setValueAt(status, row, 3);
+	}
+
+	public void removeThread(short threadID) {
+		int row = findRow(threadID);
+		
+		if (row != -1) {
+			model.removeRow(row);
+		}
 	}
 	
 

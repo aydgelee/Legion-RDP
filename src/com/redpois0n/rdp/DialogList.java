@@ -1,4 +1,4 @@
-package com.redpois0n;
+package com.redpois0n.rdp;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -9,12 +9,12 @@ import javax.swing.ScrollPaneConstants;
 import javax.swing.table.DefaultTableModel;
 
 @SuppressWarnings("serial")
-public class FrameList extends JDialog {
+public class DialogList extends JDialog {
 	
 	private JTable table;
 	private DefaultTableModel model;
 
-	public FrameList(String[] columns) {
+	public DialogList(String[] columns) {
 		setBounds(100, 100, 383, 409);
 		
 		JScrollPane scrollPane = new JScrollPane();
@@ -33,11 +33,21 @@ public class FrameList extends JDialog {
 					.addContainerGap(50, Short.MAX_VALUE))
 		);
 		
-		model = new DefaultTableModel(new Object[][] { }, columns);
+		model = new DefaultTableModel(new Object[][] { }, columns) {
+			public boolean isCellEditable(int i, int i1) {
+				return false;
+			}
+		};
 
 		table = new JTable(model);
+		table.setRowHeight(20);
+		table.getTableHeader().setReorderingAllowed(false);
 		scrollPane.setViewportView(table);
 		getContentPane().setLayout(groupLayout);
 
+	}
+	
+	public DefaultTableModel getModel() {
+		return model;
 	}
 }

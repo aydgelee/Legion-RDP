@@ -15,7 +15,7 @@ import org.apache.log4j.NDC;
 
 import com.lixia.rdp.crypto.CryptoException;
 import com.lixia.rdp.rdp5.VChannels;
-import com.redpois0n.Cracker;
+import com.redpois0n.rdp.Cracker;
 
 public class RdpJPanel {
 	

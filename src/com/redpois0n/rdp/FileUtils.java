@@ -1,4 +1,4 @@
-package com.redpois0n;
+package com.redpois0n.rdp;
 
 import java.io.BufferedReader;
 import java.io.File;

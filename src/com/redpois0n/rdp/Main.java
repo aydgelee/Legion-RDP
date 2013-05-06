@@ -1,10 +1,11 @@
-package com.redpois0n;
+package com.redpois0n.rdp;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 import javax.swing.UIManager;
@@ -13,9 +14,11 @@ import javax.swing.UIManager;
 
 public class Main {
 	
+	public static short threadID = 0;
+	
 	public static final Random rn = new Random();
 	
-	public static final HashMap<String, String> triedCombinations = new HashMap<String, String>();
+	public static final Map<String, String> triedCombinations = new HashMap<String, String>();
 	public static final List<String> usernames = new ArrayList<String>();
 	public static final List<String> passwords = new ArrayList<String>();
 
@@ -38,12 +41,6 @@ public class Main {
 		if (passFile.exists()) {
 			passwords.addAll(Arrays.asList(FileUtils.readFile(passFile)));
 		}
-		
-		System.out.println(usernames.size() + ", " + passwords.size());
-		
-		for (int i = 0; i < 10; i++) {
-			new Thread(new Cracker()).start();
-		}		
 	}
 
 	public static void error(String[] errors) {
@@ -74,5 +71,9 @@ public class Main {
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
+	}
+
+	public static synchronized short getThreadID() {
+		return threadID++;
 	}
 }

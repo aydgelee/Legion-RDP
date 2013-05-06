@@ -5,7 +5,7 @@ import com.lixia.rdp.RdesktopException;
 import com.lixia.rdp.RdpJPanel;
 import com.lixia.rdp.RdpPacket_Localised;
 import com.lixia.rdp.crypto.CryptoException;
-import com.redpois0n.Cracker;
+import com.redpois0n.rdp.Cracker;
 
 public class Rdp5JPanel extends RdpJPanel {
 	private VChannels channels;

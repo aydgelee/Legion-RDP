@@ -25,8 +25,8 @@ import com.lixia.rdp.rdp5.VChannels;
 import com.lixia.rdp.rdp5.cliprdr.ClipChannel;
 import com.lixia.rdp.rdp5.keys.KeysChannel;
 import com.lixia.rdp.tools.SendEventJPanel;
-import com.redpois0n.Cracker;
-import com.redpois0n.Main;
+import com.redpois0n.rdp.Cracker;
+import com.redpois0n.rdp.Main;
 
 public class RdesktopSwing {
 	public static final int exDiscReasonNoInfo = 0;
