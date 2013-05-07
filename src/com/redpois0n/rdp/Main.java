@@ -32,6 +32,10 @@ public class Main {
 		Frame frame = new Frame();
 		frame.setVisible(true);
 		
+		if (args.length == 1) {
+			Cracker.ip = args[0];
+		}
+		
 		File userFile = new File("users.txt");
 		File passFile = new File("passwords.txt");
 		

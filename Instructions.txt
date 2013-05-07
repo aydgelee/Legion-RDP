@@ -1,0 +1,4 @@
+usernames.txt --- Usernames
+passwords.txt --- Passwords
+
+Edit run.bat to edit ip to try to crack

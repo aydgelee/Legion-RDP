@@ -11,7 +11,7 @@ public class Cracker implements Runnable {
 
 	private boolean running = true;
 
-	private String ip = "";
+	public static String ip = ""; // TODO: Make private non static
 	private String username;
 	private String password;
 
