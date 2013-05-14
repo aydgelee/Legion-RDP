@@ -22,14 +22,12 @@ public class DialogList extends JDialog {
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(groupLayout.createSequentialGroup()
-					.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 366, Short.MAX_VALUE)
-					.addGap(17))
+				.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 367, Short.MAX_VALUE)
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 321, Short.MAX_VALUE)
+					.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 305, Short.MAX_VALUE)
 					.addGap(66))
 		);
 		
@@ -44,7 +42,6 @@ public class DialogList extends JDialog {
 		table.getTableHeader().setReorderingAllowed(false);
 		scrollPane.setViewportView(table);
 		getContentPane().setLayout(groupLayout);
-
 	}
 	
 	public DefaultTableModel getModel() {

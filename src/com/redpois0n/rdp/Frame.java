@@ -78,6 +78,15 @@ public class Frame extends JFrame {
 		mnLists.add(mntmUsernames);
 		
 		mntmPasswords = new JMenuItem("Passwords");
+		mntmPasswords.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				DialogList frame = new DialogList(new String[] { "Passwords" });
+				for (String str : Main.passwords) {
+					frame.getModel().addRow(new Object[] { str });
+				}
+				frame.setVisible(true);
+			}
+		});
 		mnLists.add(mntmPasswords);
 		
 		mnSettings = new JMenu("Settings");
